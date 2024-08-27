@@ -38,7 +38,11 @@ jobs:
             filename="${filename%.*}.html"
             pandoc -f markdown -t html5 --template=src/templates/template-with-katex.html --preserve-tabs --eol=lf --toc --no-highlight -V pagetitle="$filename" --mathjax "$file" > "site/items/$filename"
          done
-      
+      - name: Copy image and style files
+        run: |
+         cp -a img site/.
+         cp -a style site/.
+
       - name: Deploy Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
