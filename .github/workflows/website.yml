@@ -33,7 +33,11 @@ jobs:
             filename="${filename%.*}.html"
             pandoc -f markdown -t html --template=src/templates/template.html --eol=lf --toc --no-highlight -V pagetitle="$filename" "$file" > "items/$filename"
          done
-
+         for file in src/items/with-katex/*.md; do
+            filename=$(basename -- $file)
+            filename="${filename%.*}.html"
+            pandoc -f markdown -t html --template=src/templates/template-with-katex.html --eol=lf --toc --no-highlight -V pagetitle="$filename" "$file" > "items/$filename"
+         done
       
       - name: Deploy Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
