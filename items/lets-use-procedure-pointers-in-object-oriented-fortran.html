@@ -489,7 +489,7 @@ contains
    end function cliff
    
 
-    ! Output data with formatted output.
+	! Output data with formatted output.
    subroutine data_output(v)
       use :: kernel, only: nx
       implicit none
@@ -503,11 +503,11 @@ contains
       inquire(file=filename, opened=isOpened)
 
       if (.not. isOpened) then
-        open(uni, file=filename, form=&#39;formatted&#39;, &amp;
+      	open(uni, file=filename, form=&#39;formatted&#39;, &amp;
               action=&#39;write&#39;, status=&#39;replace&#39;)
       end if
       
-        write(uni, &#39;(a, i0)&#39;) &#39;&gt; -Z&#39;, count  ! header for GMT6
+		write(uni, &#39;(a, i0)&#39;) &#39;&gt; -Z&#39;, count  ! header for GMT6
 
       do i = 1, nx
          write(uni, &#39;(e10.3, 1x, e10.3)&#39;) x%value(i), v%value(i)

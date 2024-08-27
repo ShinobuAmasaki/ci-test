@@ -570,10 +570,10 @@ end subroutine data_registration</code></pre>
    ! Execute 16 simulations on Lax-Wendroff scheme (id=17:32)
    offset_k = 17
    do k = 1, 16
-    cs = 1d0
-    dt = 5d-4  + 3d-4*dble(k-1)
-    dx = L/dble(nx)
-    call main_loop(cs, dt, dx, nstep, filename, offset_k, k, &#39;LW_&#39;)
+   	cs = 1d0
+   	dt = 5d-4  + 3d-4*dble(k-1)
+   	dx = L/dble(nx)
+   	call main_loop(cs, dt, dx, nstep, filename, offset_k, k, &#39;LW_&#39;)
       call data_registration(conn, &#39;Lax-Wendroff&#39;, filename, offset_k, k, cs, dt, dx, nstep, date)
    end do
    
@@ -629,7 +629,7 @@ end program main</code></pre>
       error stop
    end if
 
-    cmd = &quot;gnuplot -c plot.gp &quot;
+	cmd = &quot;gnuplot -c plot.gp &quot;
 
    query = &quot;select dat_file from advection where sim_name = &#39;Lax-Wendroff&#39; and courant &gt; 0.55;&quot;
    
@@ -649,7 +649,7 @@ end program main</code></pre>
    end do
 
    ! Execute the command
-    print *, cmd
+	print *, cmd
    call system(cmd)
 
    call PQclear(res)
