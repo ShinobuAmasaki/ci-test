@@ -12,7 +12,7 @@ jobs:
       strategy:
          fail-fast: false
          matrix:
-            os: [ ubuntu-latet ]
+            os: [ ubuntu-latest ]
       
       steps:
       - name: Checkout repository
