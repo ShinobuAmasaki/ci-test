@@ -27,7 +27,7 @@ jobs:
          pandoc -f markdown -t html --template=src/templates/template.html --eol=lf --toc --no-highlight -V pagetitle="index.html" src/index.md -o index.html
       
       - name: Deploy Pages
-        uses: JamesIves/github-pages-deploy-action@4.4.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
          branch: gh-pages
          folder: . 
