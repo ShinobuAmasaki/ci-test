@@ -28,7 +28,7 @@ jobs:
       - name: Generate HTML files
         run: |
          mkdir -p items
-         pandoc -f markdown -t html --template=src/templates/template.html --eol=lf --toc --no-highlight -V pagetitle="index.html" src/index.md > index.html
+         pandoc -f markdown -t html --template=src/templates/index-template.html --eol=lf --toc --no-highlight -V pagetitle="index.html" src/index.md > index.html
       
       - name: Deploy Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
