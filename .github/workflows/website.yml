@@ -19,12 +19,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Pandoc
-        run: sudo apt-get install pandoc
+        run: |
+         sudo apt update
+         sudo apt -y install pandoc
+         pandoc --version
 
       - name: Generate HTML files
         run: |
          mkdir -p items
-         pandoc -f markdown -t html --template=src/templates/template.html --eol=lf --toc --no-highlight -V pagetitle="index.html" src/index.md -o index.html
+         pandoc -f markdown -t html --template=src/templates/template.html --eol=lf --toc --no-highlight -V pagetitle="index.html" src/index.md > index.html
       
       - name: Deploy Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
