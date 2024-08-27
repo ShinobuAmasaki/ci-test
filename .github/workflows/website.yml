@@ -1,0 +1,34 @@
+name: ci-test
+on:
+   push:
+      branches: [ "main" ]
+   pull_request:
+      branches: [ "main" ]
+jobs:
+   build:
+      runs-on: ${{ matrix.os }}
+      permissions:
+         contents: write
+      strategy:
+         fail-fast: false
+         matrix:
+            os: [ ubuntu-latet ]
+      
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Pandoc
+        run: sudo apt-get install pandoc
+
+      - name: Generate HTML files
+        run: |
+         mkdir -p items
+         pandoc -f markdown -t html --template=src/templates/template.html --eol=lf --toc --no-highlight -V pagetitle="index.html" src/index.md -o index.html
+      
+      - name: Deploy Pages
+        uses: JamesIves/github-pages-deploy-action@4.4.3
+        with:
+         branch: gh-pages
+         folder: . 
+            
