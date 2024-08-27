@@ -81,16 +81,16 @@
          <h2 id="example-problem-1-d-advection-equation">Example Problem: 1-D Advection Equation</h2>
          <p>Taking the numerical simulation of the one-dimensional advection equation as an example, we vary parameters, execute simulaitons, and register the results in a database.</p>
          <p>The one-dimensional advection equation is given by:</p>
-         <p>​ <br /><span class="math display">$$\frac{\partial u}{\partial t} + \frac{\partial f}{\partial x} = 0, f= cu.$$</span><br /></p>
+         <p>​ <span class="math display">\[\frac{\partial u}{\partial t} + \frac{\partial f}{\partial x} = 0, f= cu.\]</span></p>
          <p>Discretizing this equation using the explicit Eular method, Lax-Friedrich scheme and Lax-Wendroff scheme, we obtain the following difference equations:</p>
          <p>​ Explicit Eular method:</p>
-         <p>​ <br /><span class="math display">$$ u^{n+1}_{j} = u^{n}_{j} - \frac{\Delta t}{\Delta x} ( \tilde f^{n+\frac{1}{2}}_{j+\frac{1}{2}} -  \tilde f^{n-\frac{1}{2}}_{j-\frac{1}{2}}),$$</span><br /></p>
+         <p>​ <span class="math display">\[ u^{n+1}_{j} = u^{n}_{j} - \frac{\Delta t}{\Delta x} ( \tilde f^{n+\frac{1}{2}}_{j+\frac{1}{2}} -  \tilde f^{n-\frac{1}{2}}_{j-\frac{1}{2}}),\]</span></p>
          <p>​ Lax-Friedrich scheme:</p>
-         <p>​ <br /><span class="math display">$$\tilde f ^{n+\frac{1}{2}}_{j+\frac{1}{2}} = \frac{1}{2}[(f^n_{j+1} + f^n_j) - \frac{\Delta x}{\Delta t}(u^n_{j+1} - u^n_j)],$$</span><br /></p>
+         <p>​ <span class="math display">\[\tilde f ^{n+\frac{1}{2}}_{j+\frac{1}{2}} = \frac{1}{2}[(f^n_{j+1} + f^n_j) - \frac{\Delta x}{\Delta t}(u^n_{j+1} - u^n_j)],\]</span></p>
          <p>​ Lax-Wendroff scheme:</p>
-         <p>​ <br /><span class="math display">$$\tilde f ^{n+\frac{1}{2}}_{j+\frac{1}{2}} = \frac{1}{2}[(1 - c\frac{\Delta t}{\Delta x})f^n_{j+1}+ (1+ c\frac{\Delta t}{\Delta x})f^n_j], $$</span><br /></p>
-         <p>where <span class="math inline"><em>f̃</em></span> is the numerical flux, <span class="math inline"><em>f</em><sub><em>j</em></sub><sup><em>n</em></sup> = <em>f</em>(<em>u</em><sub><em>j</em></sub><sup><em>n</em></sup>) = <em>c</em><em>u</em><sub><em>j</em></sub><sup><em>n</em></sup></span>, <span class="math inline"><em>c</em></span> represents the characteristic speed, <span class="math inline"><em>Δ</em><em>t</em></span> is the time step size, and <span class="math inline"><em>Δ</em><em>x</em></span> is the spatial grid spacing.</p>
-         <p>The three quantities, <span class="math inline"><em>c</em></span>, <span class="math inline"><em>Δ</em><em>t</em></span>, and <span class="math inline"><em>Δ</em><em>x</em></span>, characterize a simulation of this equation, serving as parameters that defines a single simulation.</p>
+         <p>​ <span class="math display">\[\tilde f ^{n+\frac{1}{2}}_{j+\frac{1}{2}} = \frac{1}{2}[(1 - c\frac{\Delta t}{\Delta x})f^n_{j+1}+ (1+ c\frac{\Delta t}{\Delta x})f^n_j], \]</span></p>
+         <p>where <span class="math inline">\(\tilde f\)</span> is the numerical flux, <span class="math inline">\(f^n_{j} = f(u^n_j) = cu^n_j\)</span>, <span class="math inline">\(c\)</span> represents the characteristic speed, <span class="math inline">\(\Delta t\)</span> is the time step size, and <span class="math inline">\(\Delta x\)</span> is the spatial grid spacing.</p>
+         <p>The three quantities, <span class="math inline">\(c\)</span>, <span class="math inline">\(\Delta t\)</span>, and <span class="math inline">\(\Delta x\)</span>, characterize a simulation of this equation, serving as parameters that defines a single simulation.</p>
          <h2 id="preparation">Preparation</h2>
          <h3 id="create-user-and-database">Create User and Database</h3>
          <p>In the following Fortran program, it connect to a PostgreSQL server on the localhost and executes two commands.</p>
